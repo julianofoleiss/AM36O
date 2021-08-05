@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score, classification_report, f1_score
+from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from joblib import Parallel, delayed
@@ -52,12 +52,9 @@ def do_cv_knn(X, y, cv_splits, ks):
         pred = knn.predict(X_teste)
 
         acuracias.append(accuracy_score(y_teste, pred))
-        classification_reports.append(classification_report(y_teste, pred))
-        
-        #print(classification_report(y_teste, pred, output_dict=True))
         
         pgb.update(1)
         
     pgb.close()
     
-    return acuracias, classification_reports
+    return acuracias
