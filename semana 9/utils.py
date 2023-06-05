@@ -150,7 +150,7 @@ def do_cv(classificador, X, y, cv_splits, param_cv_folds=None, n_jobs=8, scale=F
             X_val = ss.transform(X_val)
             
         if dim_red is not None:
-            X_treino = dim_red.fit_transform(X_treino)
+            X_treino = dim_red.fit_transform(X_treino, y_treino)
             X_teste = dim_red.transform(X_teste)
             X_val = dim_red.transform(X_val)
             
